@@ -147,7 +147,7 @@
           labels : [{% for labs in key9 %}'{{labs}}',{% endfor %}],
           datasets : [
             {
-              label : "TeamA score",
+              label : "Active Case",
               data : [{% for datac in key10 %}{{datac}},{% endfor %}],
               backgroundColor :
                 "rgba(10, 20, 30, 0.3)",
@@ -165,7 +165,7 @@
           title : {
             display : true,
             position : "top",
-            text : "Bar Graph",
+            text : "Graph for Active Case's ",
             fontSize : 14,
             fontColor : "#111"
           },
