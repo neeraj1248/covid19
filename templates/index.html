@@ -62,41 +62,41 @@
          </div>
 
        </div>
+       <table class="table table-bordered table-striped table-hover self_tab">
+          <thead>
+            <tr>
+              <th scope="col">Sr No</th>
+              <th scope="col">State</th>
+              <th scope="col">Confirmed</th>
+              <th scope="col">Active</th>
+              <th scope="col">Recovered</th>
+              <th scope="col">Death</th>
+              <th scope="col">Daily Confirmed</th>
+              <th scope="col">Daily Recovered</th>
+              <th scope="col">Daily Death</th>
+              <th scope="col">Last Update</th>
+            </tr>
+          </thead>
 
+          <tbody>
+            {% for i in key1 %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{i.state}}</td>
+              <td>{{i.confirmed}}</td>
+              <td>{{i.active}}</td>
+              <td>{{i.recovered}}</td>
+              <td>{{i.deaths}}</td>
+              <td>{{i.deltaconfirmed}}</td>
+              <td>{{i.deltarecovered}}</td>
+              <td>{{i.deltadeaths}}</td>
+              <td>{{i.lastupdatedtime}}</td>
+            {% endfor %}
+            </tr>
+          </tbody>
+        </table>
      </div>
-     <table class="table table-bordered table-striped table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Sr No</th>
-            <th scope="col">State</th>
-            <th scope="col">Confirmed</th>
-            <th scope="col">Active</th>
-            <th scope="col">Recovered</th>
-            <th scope="col">Death</th>
-            <th scope="col">Daily Confirmed</th>
-            <th scope="col">Daily Recovered</th>
-            <th scope="col">Daily Death</th>
-            <th scope="col">Last Update</th>
-          </tr>
-        </thead>
 
-        <tbody>
-          {% for i in key1 %}
-          <tr>
-            <th scope="row">{{forloop.counter}}</th>
-            <td>{{i.state}}</td>
-            <td>{{i.confirmed}}</td>
-            <td>{{i.active}}</td>
-            <td>{{i.recovered}}</td>
-            <td>{{i.deaths}}</td>
-            <td>{{i.deltaconfirmed}}</td>
-            <td>{{i.deltarecovered}}</td>
-            <td>{{i.deltadeaths}}</td>
-            <td>{{i.lastupdatedtime}}</td>
-          {% endfor %}
-          </tr>
-        </tbody>
-      </table>
 
 
     <footer>

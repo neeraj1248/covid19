@@ -14,11 +14,11 @@ footer p{
     margin: 0;
 }
 /*******Header Media Query*******/
-@media screen and (max-width:999px){
-    footer{
-        height: 35px;
-        font-size: 30px;
-    }
+@media screen and (max-width:920px){
+  table{
+    /* background-color: yellow; */
+    font-size: 10px;
+  }
 }
 /* -------------------------------------------------------------------------------- */
 .d1_graph, .d2_total, .d3_daily{
@@ -37,6 +37,9 @@ footer p{
 /* .d2_total,.d3_daily{
   margin-top: 185px;
 } */
+
+
+
 /* --------------------------------------------------------------------------------------- */
 .chart-container {
   position: relative;
