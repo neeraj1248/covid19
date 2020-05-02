@@ -1,0 +1,128 @@
+{% extends 'base.html'%}
+
+{% block title %}
+  Daily Report
+{% endblock title %}
+  {% load static %}
+{% block css %}
+  <link rel="stylesheet" href={% static 'css/dailyreport.css' %} type="text/css">
+{% endblock css %}
+
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 d1_graph">
+     <div class="chart-container">
+       <canvas id="bar-chartcanvas"></canvas>
+     </div>
+   </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 d2_total  text-center">
+      <p class="d3_p1" id="a1">Total Confirmed Case: {{key2}}</p><hr class="d3_hr1">
+      <p class="d3_p1" id="a2">Total Active Case : {{key3}}</p><hr class="d3_hr1">
+      <p class="d3_p1" id="a1">Total Recovered Case: {{key4}}</p><hr class="d3_hr1">
+      <p class="d3_p1" id="a2">Total Deaths : {{key5}}</p><hr class="d3_hr1">
+    </div>
+  </div>
+
+  <table class="table table-bordered table-striped table-hover self_tab"  id="header-fixed">
+     <thead>
+       <tr>
+         <th scope="col">Sr No</th>
+         <th scope="col">Date</th>
+         <th scope="col">Daily Confirmed</th>
+         <th scope="col">Daily Recovered</th>
+         <th scope="col">Daily Death</th>
+         <th scope="col">Total Confirmed</th>
+         <th scope="col">Total Recovered</th>
+         <th scope="col">Total Death</th>
+       </tr>
+     </thead>
+
+     <tbody>
+       {% for i in key1 %}
+       <tr>
+         <th scope="row">{{forloop.counter}}</th>
+         <td>{{i.date}}</td>
+         <td>{{i.dailyconfirmed}}</td>
+         <td>{{i.dailyrecovered}}</td>
+         <td>{{i.dailydeceased}}</td>
+         <td>{{i.totalconfirmed}}</td>
+         <td>{{i.totalrecovered}}</td>
+         <td>{{i.totaldeceased}}</td>
+       {% endfor %}
+       </tr>
+     </tbody>
+   </table>
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- javascript -->
+    <script src={% static 'js/jquery.min.js' %}></script>
+    <script src={% static 'js/Chart.min.js' %}></script>
+
+    <!-- <script src={% static 'js/bar.js' %}></script> -->
+
+    <script>
+      $(document).ready(function () {
+
+        var ctx = $("#bar-chartcanvas");
+
+        var data = {
+          labels : [{% for labs in key7 %}'{{labs}}',{% endfor %}],
+          datasets : [
+            {
+              label : "Active Case",
+              data : [{% for datac in key6 %}{{datac}},{% endfor %}],
+              backgroundColor :
+                "rgba(10, 20, 30, 0.3)",
+
+              borderColor :
+                "rgba(10, 20, 30, 1)",
+
+              borderWidth : 0.6
+            },
+          ]
+        };
+
+        var options = {
+          maintainAspectRatio: false,
+          title : {
+            display : true,
+            position : "top",
+            text : "Graph for Active Case's ",
+            fontSize : 14,
+            fontColor : "#111"
+          },
+          legend : {
+            display : true,
+            position : "bottom"
+          },
+          scales : {
+            yAxes : [{
+              ticks : {
+                min : 0
+              }
+            }]
+          }
+        };
+
+        var chart = new Chart( ctx, {
+          type : "line",
+          data : data,
+          options : options
+        });
+
+      });
+    </script>
+{% endblock scripts %}
