@@ -1,0 +1,51 @@
+footer{
+    width: 100%;
+    height: 60px;
+    background-color: #212021;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+footer p{
+    color: #ede7f6;
+    padding: 0;
+    margin: 0;
+}
+/*******Header Media Query*******/
+@media screen and (max-width:920px){
+  table{
+    /* background-color: yellow; */
+    font-size: 10px;
+  }
+}
+/* --------------------------------------------------------------------------------- */
+.d1_graph, .d2_total, .d3_daily{
+  border: 1px solid black;
+  padding: 0;
+}
+.d3_p1{
+  margin: 0;
+}
+.d3_hr1{
+  margin: 0;
+}
+#a1{
+  background-color: #ECECEC;
+}
+/* .d2_total,.d3_daily{
+  margin-top: 185px;
+} */
+#header-fixed{
+
+}
+
+
+/* --------------------------------------------------------------------------------------- */
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 400px;
+  width: 95%;
+}

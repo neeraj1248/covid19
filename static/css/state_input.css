@@ -1,0 +1,40 @@
+footer{
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background-color: #212021;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+}
+footer p{
+    color: #ede7f6;
+    padding: 0;
+    margin: 0;
+}
+.in2{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.inp_but{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 200px;
+}
+
+.butcheckreport{
+  margin-left: 5px;
+}
+#cars{
+  line-height: 10px;
+  height: 29px;
+}

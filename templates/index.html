@@ -6,6 +6,7 @@
       {% load static %}
 {% block css %}
     <link rel="stylesheet" href={% static 'css/index.css'%} type="text/css">
+    <link rel="stylesheet" href={% static 'css/table.css' %} type="text/css">
 {% endblock css %}
 
 {% block content %}
@@ -29,7 +30,7 @@
          </div>
 
        </div>
-       <table class="table table-bordered table-striped table-hover self_tab">
+       <table id="table_css" class="table-container">
           <thead>
             <tr>
               <th scope="col">Sr No</th>

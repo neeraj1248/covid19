@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('home.urls')),
     path('case_time_series',include('dailyreport.urls')),
+    path('state_district_wise',include('statedata.urls')),
+    path('state_district_wise_report',include('statedata.urls')),
 ]
