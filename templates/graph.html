@@ -1,0 +1,193 @@
+{% extends 'base.html'%}
+
+{% block title %}
+  Graph data
+{% endblock title %}
+  {% load static %}
+{% block css %}
+  <link rel="stylesheet" href={% static 'css/graph.css' %} type="text/css">
+{% endblock css %}
+
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="chart-container1">
+      <canvas id="bar-chartcanvas"></canvas>
+    </div>
+    <div class="chart-container2">
+      <canvas id="bar-chartcanvas2"></canvas>
+    </div>
+  </div>
+{% endblock content %}
+
+
+{% block scripts %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- javascript -->
+    <script src={% static 'js/jquery.min.js' %}></script>
+    <script src={% static 'js/Chart.min.js' %}></script>
+
+    <!-- <script src={% static 'js/bar.js' %}></script> -->
+
+    <script>
+      $(document).ready(function () {
+
+        var ctx = $("#bar-chartcanvas");
+
+        var data = {
+          labels : [{% for labs in key1 %}'{{labs}}',{% endfor %}],
+          datasets : [
+            {
+              label : "Confirmed Case",
+              data : [{% for datac in key2 %}{{datac}},{% endfor %}],
+              backgroundColor :
+                "rgba(128, 255, 255, 0.3)",
+
+              borderColor :
+                "rgba(10, 20, 30, 1)",
+
+              borderWidth : 0.6
+            },
+            {
+              label : "Recovered Case",
+              data : [{% for datac in key4 %}{{datac}},{% endfor %}],
+              backgroundColor :
+                "rgba(102, 255, 102, 0.5)",
+
+              borderColor :
+                "rgba(10, 20, 30, 1)",
+
+              borderWidth : 0.6
+            },
+            {
+              label : "Deceased",
+              data : [{% for datac in key3 %}{{datac}},{% endfor %}],
+              backgroundColor :
+                "rgba(128, 128, 255, 0.8)",
+
+              borderColor :
+                "rgba(10, 20, 30, 1)",
+
+              borderWidth : 0.6
+            },
+          ]
+        };
+
+        var options = {
+          maintainAspectRatio: false,
+          title : {
+            display : true,
+            position : "top",
+            text : "Graph for Total Case's ",
+            fontSize : 14,
+            fontColor : "#111"
+          },
+          legend : {
+            display : true,
+            position : "bottom"
+          },
+          scales : {
+            yAxes : [{
+              ticks : {
+                min : 0
+              }
+            }]
+          }
+        };
+
+        var chart = new Chart( ctx, {
+          type : "line",
+          data : data,
+          options : options
+        });
+
+      });
+    </script>
+
+
+
+
+
+
+    <script>
+      $(document).ready(function () {
+
+        var ctx = $("#bar-chartcanvas2");
+
+        var data = {
+          labels : [{% for labs in key1 %}'{{labs}}',{% endfor %}],
+          datasets : [
+            {
+              label : "Daily Confirmed Case",
+              data : [{% for datac in key5 %}{{datac}},{% endfor %}],
+              backgroundColor :
+                "rgba(230, 0, 0, 0.2)",
+
+              borderColor :
+                "rgba(10, 20, 30, 1)",
+
+              borderWidth : 0.6
+            },
+            {
+              label : "Daily Recovered Case",
+              data : [{% for datac in key7 %}{{datac}},{% endfor %}],
+              backgroundColor :
+              "rgba(255, 255, 77, 0.5)",
+
+              borderColor :
+                "rgba(10, 20, 30, 1)",
+
+              borderWidth : 0.6
+            },
+            {
+              label : "Daily Deceased",
+              data : [{% for datac in key6 %}{{datac}},{% endfor %}],
+              backgroundColor :
+
+                "rgba(0, 115, 230, 1)",
+
+              borderColor :
+                "rgba(0, 115, 230, 1)",
+
+              borderWidth : 0.6
+            },
+          ]
+        };
+
+        var options = {
+          maintainAspectRatio: false,
+          title : {
+            display : true,
+            position : "top",
+            text : "Graph for Daily Case's ",
+            fontSize : 14,
+            fontColor : "#111"
+          },
+          legend : {
+            display : true,
+            position : "bottom"
+          },
+          scales : {
+            yAxes : [{
+              ticks : {
+                min : 0
+              }
+            }]
+          }
+        };
+
+        var chart = new Chart( ctx, {
+          type : "line",
+          data : data,
+          options : options
+        });
+
+      });
+    </script>
+
+{% endblock scripts %}

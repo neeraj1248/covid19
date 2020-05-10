@@ -22,4 +22,5 @@ urlpatterns = [
     path('case_time_series',include('dailyreport.urls')),
     path('state_district_wise',include('statedata.urls')),
     path('state_district_wise_report',include('statedata.urls')),
+    path('graph_data',include('graph.urls')),
 ]
