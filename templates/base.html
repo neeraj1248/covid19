@@ -11,6 +11,21 @@
     <title>{% block title %} {% endblock title %}</title>
       {% load static %}
     {% block css %} {% endblock css%}
+    <style>
+      .navbar .navbar-nav {
+      float: none;
+      }
+
+      .navbar .navbar-collapse {
+          text-align: center;
+      }
+      .nav-item :hover{
+        background-color: white;
+      }
+      .navbar-nav .nav-item.active .nav-link:hover{
+        color: black;
+      }
+    </style>
   </head>
 
 <body>
